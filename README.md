@@ -31,13 +31,13 @@ DATA & FILE OVERVIEW
 The data that support the findings of this study are available on request from the corresponding author. The data are not publicly available due to privacy or ethical restrictions.
 
 List of Data Files:
-	1. survey_infection_data.csv: survey and SARS-CoV-2 infection data to replicate analyses in the paper
-	2. commune_edgelist.csv: commune-level network edge data to replicate travel network figure in the paper
-	3. commune_nodelist.csv: commune-level network node data to replicate travel network figure in the paper
-	4. travel_similarity_edgelist.csv: person-level edge data reflecting shared travel patterns
+1. `survey_infection_data.csv`: survey and SARS-CoV-2 infection data to replicate analyses in the paper
+2. `commune_edgelist.csv`: commune-level network edge data to replicate travel network figure in the paper
+3. `commune_nodelist.csv`: commune-level network node data to replicate travel network figure in the paper
+4. `travel_similarity_edgelist.csv`: person-level edge data reflecting shared travel patterns
 
 List of Code Files:
-	1. replicate_results_figures.R: R code to replicate figures and statistical models in the results section of the paper
+1. `replicate_results_figures.R`: R code to replicate figures and statistical models in the results section of the paper
 
 --------------------------
 METHODOLOGICAL INFORMATION
