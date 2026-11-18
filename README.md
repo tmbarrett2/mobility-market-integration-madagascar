@@ -1,10 +1,10 @@
-This readme file was generated on [2026-01-28] by [Tyler Barrett]
+This readme file was generated on [2026-11-18] by [Tyler Barrett]
 
 -------------------
 GENERAL INFORMATION
 -------------------
 
-Code and data dictionary from: Characterizing human mobility patterns and their association with SARS-CoV-2 infection across a gradient of market integration
+Code and data dictionary from: Human Mobility Networks and SARS-CoV-2 Infection Patterns across a Gradient of Market Integration in Northeast Madagascar
 
 Author Contact Information
 
@@ -28,22 +28,27 @@ Funding and grant numbers:
 --------------------
 DATA & FILE OVERVIEW
 --------------------
-The data that support the findings of this study are available on request from the corresponding author. The data are not publicly available due to privacy or ethical restrictions.
+The data that support the findings of this study are available on request from the corresponding author. The data are not publicly available due to privacy or ethical restrictions. These files identify study communities by name.
 
 List of Data Files:
-1. `survey_infection_data.csv`: survey and SARS-CoV-2 infection data to replicate analyses in the paper
-2. `commune_edgelist.csv`: commune-level network edge data to replicate travel network figure in the paper
-3. `commune_nodelist.csv`: commune-level network node data to replicate travel network figure in the paper
-4. `travel_similarity_edgelist.csv`: person-level edge data reflecting shared travel patterns
+	1. survey_infection_data.csv: survey and SARS-CoV-2 infection data to replicate analyses in the paper
+	2. commune_edgelist.csv: commune-level network edge data to replicate travel network figure in the paper
+	3. commune_nodelist.csv: commune-level network node data to replicate travel network figure in the paper
+	4. travel_similarity_edgelist.csv: person-level edge data reflecting shared travel patterns
+	5. travel_destination_edgelist.csv: person-level edge data linking participants to the communes they traveled to
 
 List of Code Files:
-1. `replicate_results_figures.R`: R code to replicate figures and statistical models in the results section of the paper
+	1. replicate_results_figures.R: R code to replicate figures and statistical models in the results section of the paper
 
 --------------------------
 METHODOLOGICAL INFORMATION
 --------------------------
 
 A detailed description of the methods used to collect and generate the data are provided in the associated paper.
+
+replicate_results_figures.R reads the five data files from a single folder. Set the object data_root at the top of the script to that folder, or place the files in the working directory. The script writes figures, tables, and fitted model objects to outputs/replicate_results_figures/.
+
+The SARS-CoV-2 outcome variables used in the analysis are derived in the script rather than stored in the data files. Variant richness is the count of the 17 variant columns equal to 1; any infection, pre-omicron infection, and omicron infection are indicators of whether at least one variant, pre-omicron variant, or omicron variant is equal to 1. Participants without serological data have NA for all 17 variant columns.
 
 --------------------------
 DATA-SPECIFIC INFORMATION 
@@ -59,9 +64,11 @@ Data dictionary for survey_infection_data.csv
 | school_level    | highest level of formal education, primary/secondary/higher     |
 | main_activity    | primary income-generating activity, farmer/non-farmer     |
 | household_under_3   | number of children in household under three years old     |
-| village    | numeric identifier for study village     |
+| village    | name of study community     |
+| home_commune_name    | name of the commune (kaominina) the participant lives in     |
+| survey_date    | date the participant was surveyed, YYYY-MM-DD     |
 | house_sol    | house lifestyle index, higher values indicate greater market integration, see paper for full description     |
-| durable_goods_owned    | count of durable goods owned, ranging from 0 (no goods) to 7 (all goods)     |
+| durable_goods_index    | count of durable goods owned, ranging from 0 (no goods) to 12 (all goods)     |
 | sell_avg    | average percentage of crops sold (versus consumed at home)     |
 | travel_frequency    | total number of trips in the past year    |
 | travel_distance_km    | total distance traveled in the past year, kilometers     |
@@ -96,6 +103,8 @@ Data dictionary for survey_infection_data.csv
 | Lambda    | variant infection status, 0 (not infected)/1 (infected)     |
 | Mu    | variant infection status, 0 (not infected)/1 (infected)     |
 
+Note: the percentage of trips by each mode does not sum to 100 because participants could report more than one mode of transport for a single trip.
+
 Data dictionary for commune_edgelist.csv
 
 | Variable Name | Description |
@@ -125,5 +134,12 @@ Data dictionary for travel_similarity_edgelist.csv
 | from   | unique ego participant identifier     |
 | to   | unique alter participant identifier     |
 | weight   | number of shared travel destinations     |
-   
+
+Data dictionary for travel_destination_edgelist.csv
+
+| Variable Name | Description |
+|----------|----------|
+| participant_id   | unique participant identifier     |
+| visited_commune   | name of a commune the participant traveled to in the past year     |
+
 Missing data indicated as NA
