@@ -8,12 +8,14 @@
 
 # User-specific files
 .Ruserdata
+run_and_log.R
 
 # Example code in package build process
 *-Ex.R
 
 # Output files from R CMD build
 /*.tar.gz
+/outputs
 
 # Output files from R CMD check
 /*.Rcheck/
